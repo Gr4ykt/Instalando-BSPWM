@@ -2,7 +2,7 @@
 
 sxhkd &
 compton --config ~/.config/compton/compton.conf &
-feh --bg-fill ~/Desktop/s4vitar/Images/Helado.jpg &
+feh --bg-fill ~/Desktop/s4vitar/Images/imagen.jpg &
 wmname LG3D &
 ~/.config/polybar/launch.sh &
 
