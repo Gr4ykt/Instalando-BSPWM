@@ -1,0 +1,259 @@
+
+NOTA :::: SACAR TODOS LOS TXT DE LOS ARCHIVOS DE CONFIGURACION
+NOTA :::: EN ROOT HAY QUE COLOCAR LOS ARCHIVOS DE CONFIGURACION EN .config
+
+----------------------------------PAQUETES ESCENCIALES----------------------------------------------------
+apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev
+----------------------------------------------------------------------------------------------------------
+
+---------------------------------BSPWM Y SXHKD------------------------------------------------------------
+
+INSTALACION
+
+git clone https://github.com/baskerville/bspwm.git
+git clone https://github.com/baskerville/sxhkd.git
+
+make
+sudo make install # EN BSPWM #
+
+make
+sudo make install # EN SXHKD #
+
+sudo apt install bspwm
+
+sudo apt install kitty -y
+
+CONFIGURACION
+
+mkdir ~/.config/bspwm
+mkdir ~/.config/sxhkd
+
+cp ~/Descargas/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
+chmod +x ~/.config/bspmw/bspwmrc
+
+cp ~/Descargas/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
+
+mkdir ~/.config/bspwm/scripts/
+nano ~/.config/bspwm/scripts/bspwm_resize #COPIAMOS EL BSPWM_RESIZE
+---------------------------------------------------------------------------------------------------------
+
+---------------------------------POLYBAR-----------------------------------------------------------------
+
+INSTALACION Y CONFIGURACION
+
+apt install cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libuv1-dev libnl-genl-3-dev
+
+git clone --recursive https://github.com/polybar/polybar
+cd polybar
+	mkdir build
+	cd build
+	cmake ..
+	make -j$(nproc)
+	sudo make install
+----------------------------------------------------------------------------------------------------------
+
+---------------------------------PICOM Y SXHKDRC----------------------------------------------------------
+
+INTSTALACION
+
+apt install meson libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev libxcb-glx0-dev
+
+git clone https://github.com/ibhagwan/picom.git
+cd picom
+	git submodule update --init --recursive
+	meson --buildtype=release . build
+	ninja -C build
+	sudo ninja -C build install
+
+sudo apt install rofi
+
+Y REINICIAMOS
+----------------------------------------------------------------------------------------------------------
+
+--------------------------------CONFIGURANDO KITTY E INSTALACION DE FEH-----------------------------------
+
+DESCARGAR HACKNERDFONTS
+
+https://www.nerdfonts.com/font-downloads
+https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip
+
+EN SUDO (sudo -i)
+cd /usr/local/share/fonts
+mv ~/Descargas/Hack.zip .
+unzip Hack.zip
+rm Hack.zip
+
+CONFIGURAR KITTY
+
+cd ~/.config/kitty
+touch kitty.con #COPIAMOS EL DE LA PAGINA
+touch color.ini #COPIAMOS EL DE LA PAGINA
+
+sudo apt install zsh-autosuggestions
+sudo apt install feh
+-------------------------------------------------------------------------------------------------------------
+
+-------------------------------CONFIGURANDO FEH Y DESPLEGANDO LA POLYBAR-------------------------------------
+
+sudo apt install imagemagick
+
+nano ~/.config/bspwm/bspwmrc #ESCRIBIMOS LO TABULADO DENTRO DEL ARCHIVO BSPWMRC#
+	feh --bg <direccion del fondo de pantalla>
+
+git clone https://github.com/VaughnValle/blue-sky.git
+cd blue-sky/polybar
+cp * -r ~/.config/polybar
+echo '~/.config/polybar/./launch.sh' >> ~/.config/bspwm/bspwmrc
+cd blue-sky/polybar/fonts
+sudo cp * /usr/share/fonts/truetype
+fc-cache -v
+
+mkdir ~/.config/picom
+cd picom
+# COPIAR picom_conf DENTRO DEL DIRECTORIO #
+
+nano ~/.config/bspwm/bspwmrc
+	picom & 
+	bspc config border_width 0
+		#AL FINAL TODO LO TABULADO#
+---------------------------------------------------------------------------------------------------------------
+
+---------------------------------CONFIGURANDO ZSH E INSTALAR POWERLEVEL10K-------------------------------------
+
+----------------------HACER ESTO TANTO EN USUARIO COMO ROOT---------------------------
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+zsh
+
+ARCHIVOS A MODIFICAR
+
+	nano ~/.p10k.zsh # TAMBIEN MODIFICAR LA DE ROOT #	
+	NOTA :::: p10k configure #para modificar el powelevel10k
+	NOTA :::: CAMBIAR AMBOS ARCHIVOS POR P10K.ZSH Y P10K_ROOT.ZSH
+----------------------------------------------------------------------------------------------------------------
+
+-----------------------------------PROPIEDADES DE CONSOLA E INSTALACION DE BATCAT,LSD,FZF Y RANGER--------------
+
+COPIAR EL ZSHRC
+
+nano ~/.config/bspwm/bspwmrc
+	wmname LG3D &
+----------------------------------------------------
+DESCARGAR E INSTALAR BATCAT
+
+https://github.com/sharkdp/bat/releases/download/v0.22.1/bat_0.22.1_amd64.deb
+sudo dpkg -i bat_0.22.1_amd64.deb
+----------------------------------------------------
+DESCARGAR E INSTALAR LSD
+
+https://github.com/Peltoche/lsd/releases/download/0.23.1/lsd_0.23.1_amd64.deb
+sudo dpkg -i lsd_0.23.1_amd64.deb
+----------------------------------------------------
+DESCARGAR E INSTALAR FZF (TANTO USUARIO COMO ROOT)
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+DESCARGAR E INSTALAR RANGER
+
+apt install ranger
+----------------------------------------------------
+
+------------------------------------CONFIGURANDO POLYBAR-----------------------------------------------------
+
+COPIAR launch.sh a ~/.conf/polybar
+COPIAR current.ini a ~/.conf/polybar
+
+Modificar current.ini con modulos propios
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[module/ethernet_status]
+type=custom/script
+interval=2
+exec=~/.config/bin/ethernet_status.sh
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+mkdir ~/.config/bin # CREAMOS EL DIRECTORIO BIN DONDE IRAN LOS PROGRAMAS QUE SE EJECUTAN A TRAVES DE SCRIPT EN LA POLYBAR #
+nano ethernet_status.sh # COPIAMOS EL ETHERNET_STATUS #
+-------------------------------------------------------------------------------------------------------------
+
+------------------------------------CONFIGURAR LA OPCION DE GUARDADOS DE MAQUINAS SETTARGET------------------
+
+PEGAR LAS FUNCION settarget y cleantarget EN EL ZSHRC
+
+Recordar crear el modulo en ~/.config/polybar/current.ini
+copiar target_to_hack.sh en ~/.config/bin
+-------------------------------------------------------------------------------------------------------------
+
+------------------------------INSTALANDO PLUGINS Y CONFIGURAR NVChad CON NEOVIM E I3LOCK-FANCY---------------
+
+COPIAR workspace.ini A ~/.config/polybar
+apt remove neovim
+apt install neovim
+npm install tree-sitter-cli@0.18.3
+cd /opt
+DESCARGAR https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.tar.gz
+tar -xf nvim-linux64.tar.gz
+rm !$
+cd nvim-linux64/bin
+./nvim --version
+
++++++++++++++++++++++++HACER TANTO USUARIO COMO ROOT++++++++++++++++++++
+rm -rf ~/.config/nvim
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+
+agregar al PATH DE ZSHRC lo siguiente, casi al fina, antes de $PATH
+/opt/nvim/linux64/bin:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+sudo apt install i3lock
+git clone https://github.com/meskarune/i3lock-fancy.git
+cd i3lock-fancy
+sudo make install
+sudo mv i3lock-fancy /opt
+agregar al PATH DE ZSHRC lo siguiente, casi al fina, antes de $PATH
+/opt/i3lock-fancy:
+-------------------------------------------------------------------------------------------------------
+
+----------------------------TUNEAR EL ROFI-------------------------------------------------------------
+
+git clone git clone https://github.com/VaughnValle/blue-sky.git
+cd blue-sky
+mkdir -p ~/.config/rofi/themes
+cp nord.rasi ~/.config/rofi/themes
+rofi-theme-selector
+-------------------------------------------------------------------------------------------------------
+
+ATAJOS DEL TECLADO
+	win 0-9 <SESIONES DE PANTALLA "I II III IV....">
+	win ^ENTER <ABRIR CONSOLA>
+	win ^D <abrir rofi>
+	win ^Flechas <MOVERSE ENTRE PROGRAMAS ABIERTOS>
+	win ^ESC <actualizar>
+	win ^Q <MATAR PROCESO O PROGRAMA SELECCIONADO>
+	win ^S <VENTANA FLOTANTE>
+		win ^alt ^FLECHAS <AUMENTAR O DISMINUIR VENTANA FLOTANTE>
+		win ^ctrl ^FLECHAS <MOVER VENTANA FLOTANTE>
+		win ^clickIZQUIERDO <MOVER CON EL MOUSE VENTANA FLOTANTE>
+		win ^clickDERECHO <AUMENTAR O DISMINUIR VENTANA FLOTANTE>
+	win ^T <VOLVER VENTANA FLOTANTE A LA NORMALIDAD>
+	win ^F <ZOOMEAR POR COMPLETO, TAPANDO HASTA LA POLYBAR>
+	^CTRL win ^alt ^FLECHAS <SELECCIONAR>
+		^CTRL win 1-9 <SELECCIONAR PORTE DE SELECCION>
+			win ^D <SELECCIONAR PROGRAMA A ABRIR EN ESA PROPORCION>
+	win ^SHIFT ^FLECHAS <MOVER VENTANA>
+	win ^SHIFT 0-9 <MANDAR PROGRAMA SELECCIONADO A LA VENTANA NUMERADA>
+	win ^SHIFT Q <SALIR A LA PANTALLA DE BLOQUEO>
+	
+ATAJOS PARA LA KITTY
+	^CTRL ^SHIFT ^ENTER <abrir otra ventana bajo la misma sesion(SPLIT)>
+	^CTRL ^SHIFT V <ELIMINAR VENTANA ACTUAL>
+	^CTRL ^FLECHAS <MOVERSE A TRAVES DE VENTANAS>
+	^CTRL ^SHIFT P <MOVER DE LADO LA VENTANA>
+	^CTRL ^SHIFT ^ALT T <CAMBIAR DE NOMBRE LA VENTANA>
+	^CTRL ^SHIFT T <ABRIR OTRA VENTANA>
+	^CTRL ^SHIFT IZQUIERDA/DERECHA <MOVERSE ENTRE VENTANAS>
+	^CTRL ^SHIFT ,/. <MOVER LA VENTANA ACTUAL DE TRABAJO DE LADO>
+	^CTRL ^SHIFT R <MODO RESIZE DE VENTANA>
+		ESC/Q PARA SALIR DE MODO RESIZE
