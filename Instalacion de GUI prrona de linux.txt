@@ -3,7 +3,8 @@ NOTA :::: SACAR TODOS LOS TXT DE LOS ARCHIVOS DE CONFIGURACION
 NOTA :::: EN ROOT HAY QUE COLOCAR LOS ARCHIVOS DE CONFIGURACION EN .config
 
 ----------------------------------PAQUETES ESCENCIALES----------------------------------------------------
-apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev
+apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libuv1-dev libnl-genl-3-dev meson libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev libxcb-glx0-dev imagemagick bspwm kitty rofi zsh-autosuggestions feh ranger
+
 ----------------------------------------------------------------------------------------------------------
 
 ---------------------------------BSPWM Y SXHKD------------------------------------------------------------
@@ -18,10 +19,6 @@ sudo make install # EN BSPWM #
 
 make
 sudo make install # EN SXHKD #
-
-sudo apt install bspwm
-
-sudo apt install kitty -y
 
 CONFIGURACION
 
@@ -41,8 +38,6 @@ nano ~/.config/bspwm/scripts/bspwm_resize #COPIAMOS EL BSPWM_RESIZE
 
 INSTALACION Y CONFIGURACION
 
-apt install cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libuv1-dev libnl-genl-3-dev
-
 git clone --recursive https://github.com/polybar/polybar
 cd polybar
 	mkdir build
@@ -56,16 +51,12 @@ cd polybar
 
 INTSTALACION
 
-apt install meson libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev libxcb-glx0-dev
-
 git clone https://github.com/ibhagwan/picom.git
 cd picom
 	git submodule update --init --recursive
 	meson --buildtype=release . build
 	ninja -C build
 	sudo ninja -C build install
-
-sudo apt install rofi
 
 Y REINICIAMOS
 ----------------------------------------------------------------------------------------------------------
@@ -86,16 +77,12 @@ rm Hack.zip
 CONFIGURAR KITTY
 
 cd ~/.config/kitty
-touch kitty.con #COPIAMOS EL DE LA PAGINA
+touch kitty.conf #COPIAMOS EL DE LA PAGINA
 touch color.ini #COPIAMOS EL DE LA PAGINA
 
-sudo apt install zsh-autosuggestions
-sudo apt install feh
 -------------------------------------------------------------------------------------------------------------
 
 -------------------------------CONFIGURANDO FEH Y DESPLEGANDO LA POLYBAR-------------------------------------
-
-sudo apt install imagemagick
 
 nano ~/.config/bspwm/bspwmrc #ESCRIBIMOS LO TABULADO DENTRO DEL ARCHIVO BSPWMRC#
 	feh --bg <direccion del fondo de pantalla>
@@ -154,9 +141,6 @@ DESCARGAR E INSTALAR FZF (TANTO USUARIO COMO ROOT)
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-DESCARGAR E INSTALAR RANGER
-
-apt install ranger
 ----------------------------------------------------
 
 ------------------------------------CONFIGURANDO POLYBAR-----------------------------------------------------
