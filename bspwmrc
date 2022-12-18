@@ -1,8 +1,8 @@
 #! /bin/sh
 
 sxhkd &
-compton --config ~/.config/compton/compton.conf &
-feh --bg-fill ~/Images/imagen.jpg &
+#compton --config ~/.config/compton/compton.conf &
+feh --bg-fill ~/.config/bspwm/wallpaper/image.jpg &
 wmname LG3D &
 ~/.config/polybar/launch.sh &
 
