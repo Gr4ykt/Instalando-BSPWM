@@ -11,9 +11,9 @@ apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-
 - [BSPWM Y SXHKD](#bspwm-y-sxhkd)
 - [POLYBAR](#polybar)
 - [PICOM](#picom)
--
--
--
+- [KITTY](#kitty)
+- [FEH](#feh)
+- [HACKNERDFONTS](#hacknerdfonts)
 
 # BSPWM Y SXHKD
 BSPWM es la GUI que utilizaremos y SXHKD es el gestor de shortcouts que tendremos en la GUI, ejemplo abrir terminal, reiniciar BSPWM, etc.
@@ -67,4 +67,20 @@ meson --buildtype=release . build
 ninja -C build
 sudo ninja -C build install
 ```
-### Opcional --> Reiniciamos y vemos que tal va el BSPWM
+### Opcional --> Reiniciamos y vemos que tal va el BSPWM, pero aun nos queda configuracion de la kitty, asi que aprovechamos esto para aplicar cambios y que se creen archivos de conf.
+
+# KITTY
+```shell
+cd ~/.config/kitty && cp ~/Instalando-BSPWM/kitty.conf . && cp ~/Instalando-BSPWM/color.ini .
+```
+# FEH
+### Con feh es sencillo, ya que tan solo tendremos que colocar la wallpaper que queramos en la ruta "~/.config/bspwm/wallpaper" con el nombre "image.jpg", aunque si no es de tu gusto puedes cambiar en el archivo BSPWMRC la ruta, nombre, etc, en la cual se alojara tu wallpaper, pero esta es la predeterminada de esta conf.
+
+# HACKNERDFONTS
+### Descargamos
+https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Hack.zip
+
+### Como root ejecutar lo siguiente para copiar las fonts descargadas
+```shell
+cd /usr/local/share/fonts && mv ~/Descargas/Hack.zip . && unzip Hack.zip && rm Hack.zip
+```
