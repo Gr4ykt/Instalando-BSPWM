@@ -1,5 +1,5 @@
 # Instalando-BSPWM
-Este es un tutorial de como instalar BSPWM con configuraciones aparte.
+Este es un tutorial de como instalar BSPWM con configuraciones de mi estacion de trabajo.
 
 ### nota --> COLOCAR "Instalando-BSPWM" EN EL DIRECTORIO "/home/USUARIO" para una instalacion a la par.
 
