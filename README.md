@@ -38,7 +38,7 @@ mkdir ~/.config/bspwm && mkdir ~/.config/sxhkd
 ```
 ```shell
 cp ~/Instalando-BSPWM/bspwmrc ~/.config/bspwm/bspwmrc
-chmod +x ~/.config/bspmw/bspwmrc
+chmod +x ~/.config/bspwm/bspwmrc
 ```
 ```shell
 cp ~/Instalando-BSPWM/sxhkdrc ~/.config/sxhkd/sxhkdrc
