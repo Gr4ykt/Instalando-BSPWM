@@ -89,6 +89,7 @@ sudo ninja -C build install
 
 # KITTY
 ```shell
+mkdir ~/.config/kitty
 cd ~/.config/kitty && cp ~/Instalando-BSPWM/kitty.conf . && cp ~/Instalando-BSPWM/color.ini .
 ```
 
