@@ -122,9 +122,7 @@ function settarget(){
     echo "$ip_address $machine_name" > ~/.config/bin/target
 }
 
-function cleartarget(){
-	echo '' > ~/.config/bin/target
-}
+#Agregar el cleantarget aqui!!
 
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
