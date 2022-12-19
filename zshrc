@@ -122,6 +122,10 @@ function settarget(){
     echo "$ip_address $machine_name" > ~/.config/bin/target
 }
 
+function cleartarget(){
+	echo '' > ~/.config/bin/target
+}
+
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
