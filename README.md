@@ -74,6 +74,9 @@ sudo ninja -C build install
 cd ~/.config/kitty && cp ~/Instalando-BSPWM/kitty.conf . && cp ~/Instalando-BSPWM/color.ini .
 ```
 # FEH
+```shell
+mkdir ~/.config/bspwm/wallpaper
+```
 ### Con feh es sencillo, ya que tan solo tendremos que colocar la wallpaper que queramos en la ruta "~/.config/bspwm/wallpaper" con el nombre "image.jpg", aunque si no es de tu gusto puedes cambiar en el archivo BSPWMRC la ruta, nombre, etc, en la cual se alojara tu wallpaper, pero esta es la predeterminada de esta conf.
 
 # HACKNERDFONTS
